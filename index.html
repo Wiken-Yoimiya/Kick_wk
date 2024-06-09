@@ -3,74 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello,world!</title>
+    <title>Document</title>
     <style>
+      /* 去除内外边距 */
       * {
-        /* 清除所有的内外边距 */
         padding: 0;
         margin: 0;
       }
-      div {
-        /* 背景颜色 */
-        background-color: rgba(199, 188, 188, 0.73);
-        /* 文字居中 */
-        text-align: center;
+      body {
+        background-color: #eee;
+      }
+      .slide {
+        width: 250px;
+        height: 450px;
+        background-color: rgba(105, 101, 101, 0.6);
         /* 内边距 */
-        padding: 50px;
-        border-radius: 20px;
+        padding: 20px 0;
+        margin: 100px;
+        /* 相对定位 */
+        position: relative;
       }
-      img {
-        width: 100px;
-        height: 100px;
-        /* 圆角 */
-        border-radius: 50%;
+      .slide ul {
+        /* 去除样式 */
+        list-style: none;
       }
-      footer {
-        height: 40px;
-        display: flex;
-        justify-content: center;
-        padding-top: 20px;
-        background-color: #45a1ff;
+      .slide ul li {
+        width: 100%;
+        height: 42px;
+        /* 文本上下居中 */
+        line-height: 42px;
+        /* 文本对齐 */
+        text-align: left;
+        /* 左内边距 */
+        padding-left: 30px;
+        /* 防止容器增大 */
+        box-sizing: border-box;
+      }
+      .slide ul li a {
+        /* 变为块级元素 */
+        display: inline-block;
+        /* 去掉下划线 */
+        text-decoration: none;
+        /* 字体颜色 */
         color: #fff;
-        border-radius: 5px;
       }
-      .time {
-        width: 680px;
-        height: 680px;
-        background-color: cornsilk;
-        /* 显示模式设置为 flexbox 布局， */
-        display: flex;
-        /* 子元素垂直排列（从上到下） */
-        flex-direction: column;
-        /* 水平交叉轴居中对齐 */
-        align-items: center;
-        /* 垂直轴居中对齐 */
-        justify-content: center;
-        margin: 20px auto;
-        border: thick double #32a1ce;
-        border-radius: 40px;
+      /* 将鼠标移到标签上时显示颜色 */
+      .slide ul li:hover {
+        background-color: #ff6700;
       }
-      span {
+      .slide-list {
+        width: 992px;
+        height: 490px;
         background-color: aqua;
+        /* 绝对定位 */
+        position: absolute;
+        top: 0;
+        left: 250px;
+        /* 添加边框 */
+        border: 1px solid #b09292;
+        /* 去除右边框 */
+        border-left: none;
+        /* 添加阴影 */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+        /* 默认不显示 */
+        display: none;
+      }
+      .slide ul li:hover > .slide-list {
+        display: block;
       }
     </style>
   </head>
   <body>
-    <div>
-      <img src="./source/eye01.jpg" alt="头像" />
+    <!-- 结构 -->
+    <div class="slide">
+      <ul>
+        <li>
+          <a href="#">手机</a>
+          <div class="slide-list">mimi</div>
+        </li>
+        <li>
+          <a href="#">电视</a>
+          <div class="slide-list">okko</div>
+        </li>
+      </ul>
     </div>
-    <div class="time">
-      <span>当前时间</span>
-      <p>00:00:00</p>
-      <p>距离今天结束还有</p>
-      <div id="dao-time">
-        <span class="hour">00</span>
-        <i>:</i>
-        <span class="minutes">00</span>
-        <i>:</i>
-        <span class="seconds">00</span>
-      </div>
-    </div>
-    <footer>我的网站</footer>
   </body>
 </html>
