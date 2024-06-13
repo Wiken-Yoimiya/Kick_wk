@@ -5,87 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      /* 去除内外边距 */
-      * {
+      body {
         padding: 0;
         margin: 0;
+        /* 网页元素使用无衬线字体 */
+        font-family: sans-serif;
+        background-color: #262626;
       }
-      body {
-        background-color: #eee;
+
+      .box {
+        /* 相对位置 */
+        position: absolute;
+        /* 元素的顶部放置位置 */
+        top: 50%;
+        left: 50%;
+        /* 将元素沿 X 轴和 Y 轴分别平移 -50% */
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 400px;
+        /* 背景色 */
+        background: #383737;
       }
-      .slide {
-        width: 250px;
-        height: 450px;
-        background-color: rgba(105, 101, 101, 0.6);
-        /* 内边距 */
-        padding: 20px 0;
-        margin: 100px;
-        /* 相对定位 */
+
+      .about {
+        padding: 160px;
+        color: #fff;
+        /* 文字居中 */
+        text-align: center;
+        /* 绝对位置 */
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .about h2 {
+        margin: 0;
+        padding: 0;
+        font-size: 30px;
+        /* 将文本转化为大写字母 */
+        text-transform: uppercase;
+      }
+
+      .figure {
+        width: 100%;
+        height: 100%;
         position: relative;
       }
-      .slide ul {
-        /* 去除样式 */
-        list-style: none;
-      }
-      .slide ul li {
-        width: 100%;
-        height: 42px;
-        /* 文本上下居中 */
-        line-height: 42px;
-        /* 文本对齐 */
-        text-align: left;
-        /* 左内边距 */
-        padding-left: 30px;
-        /* 防止容器增大 */
-        box-sizing: border-box;
-      }
-      .slide ul li a {
-        /* 变为块级元素 */
-        display: inline-block;
-        /* 去掉下划线 */
-        text-decoration: none;
-        /* 字体颜色 */
-        color: #fff;
-      }
-      /* 将鼠标移到标签上时显示颜色 */
-      .slide ul li:hover {
-        background-color: #ff6700;
-      }
-      .slide-list {
-        width: 992px;
-        height: 490px;
-        background-color: aqua;
-        /* 绝对定位 */
+
+      .figure::before,
+      .figure::after {
+        content: "";
         position: absolute;
         top: 0;
-        left: 250px;
-        /* 添加边框 */
-        border: 1px solid #b09292;
-        /* 去除右边框 */
-        border-left: none;
-        /* 添加阴影 */
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
-        /* 默认不显示 */
-        display: none;
+        width: 50%;
+        height: 100%;
+        background: url(source/01.jpg) no-repeat;
+        /* 图像放大两倍 */
+        background-size: 200% 100%;
+        transition: 0.5s;
       }
-      .slide ul li:hover > .slide-list {
-        display: block;
+
+      .figure::before {
+        left: 0;
+        background-position: left;
+        transform-origin: bottom;
+      }
+
+      .figure::after {
+        right: 0;
+        background-position: right;
+        transform-origin: top;
+      }
+
+      .box:hover .figure::before {
+        /* 沿x轴旋转  沿y轴平移 */
+        transform: rotateX(90deg) translateY(50%);
+      }
+
+      .box:hover .figure::after {
+        transform: rotateX(90deg) translateY(-50%);
       }
     </style>
   </head>
   <body>
-    <!-- 结构 -->
-    <div class="slide">
-      <ul>
-        <li>
-          <a href="#">手机</a>
-          <div class="slide-list">mimi</div>
-        </li>
-        <li>
-          <a href="#">电视</a>
-          <div class="slide-list">okko</div>
-        </li>
-      </ul>
+    <div class="box">
+      <div class="about">
+        <h2>拨云见日</h2>
+        <p>百鬼夜行，有人混迹其中，乐此不疲。</p>
+      </div>
+      <div class="figure"></div>
     </div>
   </body>
 </html>
